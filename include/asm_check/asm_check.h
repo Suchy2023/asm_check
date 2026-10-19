@@ -1,5 +1,4 @@
-#include <functional>
-#include <concepts>
+#pragma once
 
 namespace asm_check
 {
@@ -13,31 +12,17 @@ namespace asm_check
 
 namespace asm_check::internal
 {
-	// Initialization before calling passed function
-	// Pollutes preserved registers
-	// Pushes canary values on the stack
 	extern "C"
-	void initialize();
-
-	// Check after function was called
-	// checks callee saved registers registers
-	// checks canary values on the stack
-	extern "C"
-	asm_check_result check();	
+	asm_check_result assembly_checker(void(*)());
 }
 
 namespace asm_check
-{
+{	
+	using VoidFuncPtr = void(*)();
 
-	template <typename ...TArgs>
-	asm_check_result asm_check(std::invocable<TArgs...> auto&& fn, TArgs&&... args)
-	{	
-		internal::initialize();
+	asm_check_result asm_check(VoidFuncPtr func);
 
-		std::invoke(std::forward<decltype(fn)>(fn), std::forward<TArgs>(args)...);
+	#define ASM_CHECK(function_call) \
+	asm_check::asm_check([]() { function_call; });
 
-		internal::check();
-
-		return asm_check_result::error;
-	}
 }
