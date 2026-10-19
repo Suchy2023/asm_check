@@ -7,7 +7,9 @@ target_sources(
 	PRIVATE
 	initialize.asm
 	check.asm
-	audit_data.inc	
+	audit_data.inc
+	assembly_checker.asm
+	asm_check.cpp
 )
 
 target_include_directories(

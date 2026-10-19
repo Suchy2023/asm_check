@@ -6,10 +6,13 @@ add_executable(asm_check_tests)
 target_sources(
 	asm_check_tests
 	PRIVATE
-	asm_check.test.cpp
-	asm_check.register_preservation.test.cpp
+	asm_check.error_cases.cpp
+	asm_check.success_cases.cpp
 	misbehaving_functions.asm
-	stack_corruption.test.cpp
+	test_helpers.asm
+	asm_check.abi.test.cpp
+	check_registers_preserved.asm
+	check_stack_corrupted.asm
 )
 
 target_include_directories(
