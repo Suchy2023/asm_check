@@ -1,8 +1,2 @@
 
-
-asm_check is a tiny library that can test assembly functions.
-
-Since the library is tiny, it can only validate things such as:
--whether callee saved registers were preserved
--whether function modified values on the stack that did not belong to it (like values before the parameters)
--stack alignment
+Tries to follow latest System V ABI: https://gitlab.com/x86-psABIs/x86-64-ABI
