@@ -1,5 +1,12 @@
 
 //registers specific
+
+extern "C"
+void not_preserving_rsp();
+
+extern "C"
+void not_preserving_rbp();
+
 extern "C"
 void not_preserving_rbx();
 
