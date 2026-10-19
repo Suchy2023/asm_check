@@ -14,7 +14,12 @@
 			"inherits": "base",
 			"name": "debug",
 			"displayName": "Debug preset",
-			"binaryDir": "${sourceDir}/build/debug"
+			"binaryDir": "${sourceDir}/build/debug",
+			"cacheVariables":
+			{
+				"CMAKE_BUILD_TYPE": "Debug",
+				"CMAKE_CXX_FLAGS": "-Wall -Wextra -Wpedantic -g -O0"
+			}
 		}
 	],
 	"buildPresets": [
@@ -32,7 +37,7 @@
 				"outputOnFailure": true
 			},
 			"execution": {
-				"stopOnFailure": true
+				"stopOnFailure": false
 			}
 		}
 	]
